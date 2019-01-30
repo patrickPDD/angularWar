@@ -80,8 +80,8 @@ angular.module("myApp", []).controller("MyController", [
 
       return array;
     }
-
     //end of Fisher-yates shuffle
+
     shuffle(cards);
     //deal cards
     //TODO needs to be reworked for more than two players
@@ -94,10 +94,6 @@ angular.module("myApp", []).controller("MyController", [
       }
       i++;
     }
-    // $scope.player1 = players[0].hand.pop();
-    // console.log("player 2 cards", players[1].hand);
-    // $scope.player2 = players[1].hand.pop();
-    //play
 
     //draw cards for each player
     $scope.draw = function() {
@@ -114,8 +110,6 @@ angular.module("myApp", []).controller("MyController", [
       $scope.currentBattle = currentBattle;
 
       //display cards for each player
-
-      // console.log("winner: ", players[keyofwinner][name]);
 
       if (currentBattle[0].value === currentBattle[1].value) {
         $scope.winningHand = "tie";
@@ -143,5 +137,4 @@ angular.module("myApp", []).controller("MyController", [
 
 angular.element(function() {
   angular.bootstrap(document, ["myApp"]);
-  console.log("this is happening bootstrap");
 });

@@ -1,32 +1,52 @@
 <!DOCTYPE html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous"
+  />
+</head>
+
 <html xmlns:ng="http://angularjs.org">
   <body ng-controller="MyController">
-      <div class="container"
-    <h1>Lets Play War!!</h1>
+    <div class="container">
+      <h1>Lets Play War!!</h1>
 
-    <div class="input-group">
-      <input
-        type="text"
-        class="form-control"
-        id="player-name"
-        placeholder="Player Name"
-      />
-      <span class="input-group-btn">
-        <button type="button" class="btn btn-default">Add Player</button>
-      </span>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          id="player-name"
+          placeholder="Player Name"
+        />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default">Add Player</button>
+        </span>
+      </div>
+      <br />
+      <button type="button" class="btn btn-default" ng-click="draw()">
+        Deal Cards
+      </button>
+
+      <!-- <div>{{ currentBattle }}</div> -->
+      <div class="player-card" ng-If="ShowBattle">
+        <h3>{{ players[0].name }} <span> VS </span> {{ players[1].name }}</h3>
+        {{ currentBattle[0].name }} {{ currentBattle[0].suite }}
+        <span>VS </span> {{ currentBattle[1].name }}
+        {{ currentBattle[1].suite }}
+      </div>
+      <div class="winner" ng-If="ShowBattle">
+        {{ winningHand }} is the winner of this hand
+      </div>
+      <div ng-repeat="player in players">
+        {{ player.name }} has {{ player.hand.length }} cards in their deck
+      </div>
+      <div class="winner" ng-if="$scope.winner">
+        The game is over and the winner is {{ winner }}
+      </div>
     </div>
-    <br />
-    <button type="button" class="btn btn-default" ng-click="draw()">
-      Deal Cards
-    </button>
-
-    <!-- <div>{{ currentBattle }}</div> -->
-    <div class="player-card" ng-If="ShowBattle">{{currentBattle[0].name }} {{currentBattle[0].suite }} <span>VS </span> {{currentBattle[1].name }} {{currentBattle[1].suite }}</div>
-    <div class="winner" ng-If="ShowBattle">{{ winningHand }} is the winner</div>
-    <div ng-repeat="player in players">{{ player.name }} has {{ player.hand.length}} cards in their deck</div>
     <script src="http://code.angularjs.org/snapshot/angular.js"></script>
     <script src="./app.js"></script>
   </body>

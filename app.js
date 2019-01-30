@@ -131,7 +131,14 @@ angular.module("myApp", []).controller("MyController", [
           cacheOcards = [];
         }
       }
+      if (players[0].hand.length == 0) {
+        $scope.winner = players[0].name;
+      }
+      if (players[1].hand.length == 0) {
+        $scope.winner = players[1].name;
+      }
     };
+    //someone wins
   }
 ]);
 
